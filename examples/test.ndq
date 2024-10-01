@@ -1,0 +1,17 @@
+.define requirements:memory 2048
+.define requirements:max_exec_time 10
+
+proc main .simul
+  .accepts a u64
+  .accepts b u64
+
+  .returns u64
+
+  .alloc c u64
+
+  mutate c = %a + %b
+
+  return c
+endproc
+
+call main 20 20

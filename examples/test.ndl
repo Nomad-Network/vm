@@ -1,0 +1,21 @@
+.requires = [
+  .memory 1U
+  .max_exec_time 10s
+]
+
+.MAIN = [
+  .is executable
+
+  .arguments (
+    [.type U64, .name a],
+    [.type U64, .name b]
+  )
+
+  .returns U64
+
+  alloc U64 c = 0
+
+  mutate c = %a + %b
+
+  return c
+]
