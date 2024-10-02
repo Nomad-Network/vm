@@ -46,7 +46,6 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
-
     nomadvm_mod.addIncludePath(b.path("src/never/include"));
     nomadvm_mod.addLibraryPath(b.path("src/never/build"));
     nomadvm_mod.linkSystemLibrary("nev", .{});
@@ -57,6 +56,7 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
+    exe.step.dependOn(&lib.step);
     exe.root_module.addImport("nomadvm", nomadvm_mod);
     exe.root_module.addImport("clap", clap.module("clap"));
 
