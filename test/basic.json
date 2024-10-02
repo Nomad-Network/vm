@@ -1,0 +1,12 @@
+{
+  "functions": [
+    {
+      "name": "kernel",
+      "execution": "record",
+      "parameters": ["record"],
+      "result": "float"
+    }
+  ],
+  "path": "test/basic.nev",
+  "code": ""
+}
