@@ -45,10 +45,6 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
-    nomadvm_mod.owner.top_level_steps.putNoClobber(b.allocator, "libnev", @constCast(&.{
-        .step = never.step,
-        .description = "Link with libnev",
-    })) catch unreachable;
     nomadvm_mod.addIncludePath(b.path("src/never/include"));
     nomadvm_mod.addLibraryPath(b.path("src/never/build"));
     nomadvm_mod.linkSystemLibrary("nev", .{});
