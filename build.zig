@@ -45,7 +45,7 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
-    b.top_level_steps.putNoClobber(b.allocator, "libnev", @constCast(&.{
+    nomadvm_mod.owner.top_level_steps.putNoClobber(b.allocator, "libnev", @constCast(&.{
         .step = never.step,
         .description = "Link with libnev",
     })) catch unreachable;
