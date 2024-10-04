@@ -31,7 +31,7 @@ pub fn build(b: *std.Build) void {
         "git clone https://github.com/neutrino2211/never src/never && cd src/never && (CC=\"zig cc\" CXX=\"zig c++\" cmake -B build -DNO_FFI:bool=TRUE || true) && cd build && make -j8",
     });
     _ = never.captureStdOut();
-
+    lib.step.dependOn(&never.step);
     lib.root_module.addIncludePath(b.path("src/never/include"));
     lib.root_module.addLibraryPath(b.path("src/never/build"));
     lib.root_module.linkSystemLibrary("nev", .{});
@@ -45,7 +45,6 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
-    nomadvm_mod.owner.default_step.dependOn(&never.step);
     nomadvm_mod.addIncludePath(b.path("src/never/include"));
     nomadvm_mod.addLibraryPath(b.path("src/never/build"));
     nomadvm_mod.linkSystemLibrary("nev", .{});
