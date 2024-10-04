@@ -32,7 +32,6 @@ pub fn build(b: *std.Build) void {
     });
     _ = never.captureStdOut();
 
-    lib.step.dependOn(&never.step);
     lib.root_module.addIncludePath(b.path("src/never/include"));
     lib.root_module.addLibraryPath(b.path("src/never/build"));
     lib.root_module.linkSystemLibrary("nev", .{});
