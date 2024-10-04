@@ -28,7 +28,7 @@ pub fn build(b: *std.Build) void {
     const never = b.addSystemCommand(&[_][]const u8{
         "sh",
         "-c",
-        "cd src/never && (CC=\"zig cc\" CXX=\"zig c++\" cmake -B build -DNO_FFI:bool=TRUE || true) && cd build && make -j8",
+        "git clone https://github.com/neutrino2211/never && cd src/never && (CC=\"zig cc\" CXX=\"zig c++\" cmake -B build -DNO_FFI:bool=TRUE || true) && cd build && make -j8",
     });
     _ = never.captureStdOut();
 
