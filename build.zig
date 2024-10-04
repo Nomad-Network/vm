@@ -46,6 +46,7 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
+    nomadvm_mod.owner.getInstallStep().dependOn(&never.step);
     nomadvm_mod.addIncludePath(b.path("src/never/include"));
     nomadvm_mod.addLibraryPath(b.path("src/never/build"));
     nomadvm_mod.linkSystemLibrary("nev", .{});
